@@ -3,3 +3,6 @@ A laser turret guided by facial recognition. The facial recognition is coded in 
 <p align = "center">
   <img src="https://github.com/user-attachments/assets/2280191c-b560-47b3-ac80-a6946bd25707" width=50% height=50%>
 </p>
+<p align = "center">
+  https://www.youtube.com/shorts/2uXfmeIZgA8
+</p>
