@@ -23,12 +23,12 @@ void loop() {
     Serial.println(inputString);
 
     // Extract x and y coordinates from recieved string
-    int x = inputString.substring(0, inputString.indexOf(',')).toInt();
-    int y = inputString.substring(inputString.indexOf(',') + 1).toInt();
+    float x = inputString.substring(0, inputString.indexOf(',')).toInt();
+    float y = inputString.substring(inputString.indexOf(',') + 1).toInt();
 
     // Map x and y coordinates from revieved string into external webcam FOV
-    int theta_x = map(x, 0, 1920, 58, 132);
-    int theta_y = map(y, 0, 1080, 113, 81);
+    float theta_x = map(x, 0, 1920, 53, 128);
+    float theta_y = map(y, 0, 1080, 110, 74);
     
     // Write mapped angles to each servos
     left_right.write(theta_x);
