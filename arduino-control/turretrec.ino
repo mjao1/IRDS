@@ -17,7 +17,6 @@ void setup() {
 
 void loop() {
   while(Serial.available()){
-    delay(100);
     lastSerialTime = millis(); // Update last serial time
     digitalWrite(13, LOW);
     inputString = Serial.readStringUntil('\r'); // Read incoming data from facerec.py until carriage return
