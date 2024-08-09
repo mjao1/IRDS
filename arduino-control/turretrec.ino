@@ -6,6 +6,7 @@ Servo up_down;
 
 unsigned long lastSerialTime = 0; // Variable to store last serial data time
 const unsigned long timeout = 5000; // Variable to store timeout duration to 5 seconds
+int serialCount = 0; // Variable to store serial count
 
 void setup() {
   pinMode(13, OUTPUT);
@@ -16,7 +17,9 @@ void setup() {
 }
 
 void loop() {
-  while(Serial.available()){
+  serialCount = 0;
+  
+  while (Serial.available()){
     lastSerialTime = millis(); // Update last serial time
     digitalWrite(13, LOW);
     inputString = Serial.readStringUntil('\r'); // Read incoming data from facerec.py until carriage return
@@ -33,8 +36,14 @@ void loop() {
     // Write mapped angles to each servos
     left_right.write(theta_x);
     up_down.write(theta_y);
-  }
 
+    serialCount ++;
+    if (serialCount > 10) {
+      digitalWrite(2, HIGH);
+    }
+  }
+  digitalWrite(2, LOW);
+  
   // Check if no data has been received past timeout period and turn off laser diode if so
   if (millis() - lastSerialTime > timeout) {
     digitalWrite(13, HIGH);
