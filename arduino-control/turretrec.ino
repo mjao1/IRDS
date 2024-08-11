@@ -10,15 +10,14 @@ int serialCount = 0; // Variable to store serial count
 
 void setup() {
   pinMode(13, OUTPUT);
+  pinMode(9, OUTPUT);
   digitalWrite(13, HIGH);
-  left_right.attach(11);
-  up_down.attach(10);
+  left_right.attach(12);
+  up_down.attach(11);
   Serial.begin(57600);
 }
 
 void loop() {
-  serialCount = 0;
-  
   while (Serial.available()){
     lastSerialTime = millis(); // Update last serial time
     digitalWrite(13, LOW);
@@ -38,13 +37,17 @@ void loop() {
     up_down.write(theta_y);
 
     serialCount ++;
-    if (serialCount > 10) {
-      digitalWrite(2, HIGH);
+    //Actuate gearbox after 20 coordinates
+    if (serialCount > 20) {
+      digitalWrite(9, HIGH);
+      delay(200);
+      digitalWrite(9, LOW);
+      serialCount = 0;
     }
   }
-  digitalWrite(2, LOW);
+  digitalWrite(9, LOW);
   
-  // Check if no data has been received past timeout period and turn off laser diode if so
+  // Check if no coodinates have been received past timeout period and turn off laser diode if so
   if (millis() - lastSerialTime > timeout) {
     digitalWrite(13, HIGH);
   } else {
