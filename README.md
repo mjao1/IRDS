@@ -6,6 +6,6 @@ A projectile/laser turret guided by facial recognition. The facial recognition i
 
 <p align = "center">
   Demos:
-  <br>https://youtube.com/shorts/FE57_PTdPvw?si=3Otmu_hgnJ35llEw
-  <br>https://youtube.com/shorts/putWm9wyfx4?si=dXoKtPFu8kXs6i-v
+  <br>Actuation - https://youtube.com/shorts/FE57_PTdPvw?si=3Otmu_hgnJ35llEw
+  <br>Tracking - https://youtube.com/shorts/putWm9wyfx4?si=dXoKtPFu8kXs6i-v
 </p>
